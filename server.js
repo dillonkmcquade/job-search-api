@@ -12,7 +12,7 @@ app.get('/', (req,res) => {
 
 app.post("/jobs", (req, res) => {
   fetch(
-    `https://jobs.github.com/positions.json?description=${req.body.description}&location=${req.body.location}`
+    `https://jobs.github.com/positions.json?description=${req.body.description}&location=${req.body.location}&page=${req.body.page}`
   )
     .then(response => response.json())
     .then(jobs => res.send(jobs))
