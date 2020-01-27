@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
-const port = 3001;
 const cors = require("cors");
 const fetch = require("node-fetch");
 
 app.use(cors());
 app.use(express.json());
+
+app.get('/', (req,res) => {
+  res.send('its Working')
+});
 
 app.post("/jobs", (req, res) => {
   fetch(
@@ -25,4 +28,4 @@ app.get("/initialJobs", (req, res) => {
     .catch(err => res.status(400).json("ERRORRRRR!!!!"));
 });
 
-app.listen(port, () => console.log(`Listening on port ${port} !`));
+app.listen(process.env.PORT || 3001 , () => console.log(`Listening on port ${process.env.PORT} !`));
