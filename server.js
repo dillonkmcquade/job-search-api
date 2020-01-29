@@ -2,9 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const fetch = require("node-fetch");
+const enforce = require('express-sslify');
 
 app.use(cors());
 app.use(express.json());
+app.use(enforce.HTTPS({trustProtoHeader: true}))
 
 app.get('/', (req,res) => {
   res.send('its Working')
